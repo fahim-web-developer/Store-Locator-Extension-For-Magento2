@@ -1,0 +1,45 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="acme_storelocator_category" resource="default" engine="innodb">
+        <column xsi:type="int" name="category_id" unsigned="false" nullable="false" identity="true"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="100"/>
+        <column xsi:type="text" name="icon" nullable="true"/>
+        <column xsi:type="int" name="is_active" unsigned="true" nullable="false" default="1"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="category_id"/>
+        </constraint>
+        <index referenceId="ACME_STORELOCATOR_CATEGORY_CATEGORY_ID" indexType="btree">
+            <column name="category_id"/>
+        </index>
+    </table>
+    <table name="acme_storelocator_store" resource="default" engine="innodb">
+        <column xsi:type="int" name="store_id" unsigned="false" nullable="false" identity="true"/>
+        <column xsi:type="int" name="category_id" unsigned="false" nullable="true"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="100" default=""/>
+        <column xsi:type="text" name="address" nullable="true"/>
+        <column xsi:type="varchar" name="postcode" nullable="true" length="100"/>
+        <column xsi:type="varchar" name="city" nullable="true" length="100"/>
+        <column xsi:type="varchar" name="country" nullable="true" length="2"/>
+        <column xsi:type="varchar" name="phone" nullable="false" length="100" default=""/>
+        <column xsi:type="varchar" name="email" nullable="false" length="100" default=""/>
+        <column xsi:type="varchar" name="fax" nullable="false" length="100" default=""/>
+        <column xsi:type="varchar" name="website" nullable="false" length="100" default=""/>
+        <column xsi:type="text" name="lat" nullable="true"/>
+        <column xsi:type="text" name="lng" nullable="true"/>
+        <column xsi:type="varchar" name="zoom" nullable="true" length="5"/>
+        <column xsi:type="int" name="is_active" unsigned="true" nullable="false" default="1"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="store_id"/>
+        </constraint>
+        <index referenceId="ACME_STORELOCATOR_STORE_STORE_ID" indexType="btree">
+            <column name="store_id"/>
+        </index>
+        <index referenceId="ACME_STORELOCATOR_STORE_CTGR_ID_ACME_STORELOCATOR_CTGR_CTGR_ID" indexType="btree">
+            <column name="category_id"/>
+        </index>
+        <constraint xsi:type="foreign" referenceId="ACME_STORELOCATOR_STORE_CTGR_ID_ACME_STORELOCATOR_CTGR_CTGR_ID" table="acme_storelocator_store" column="category_id" referenceTable="acme_storelocator_category" referenceColumn="category_id" onDelete="CASCADE"/>
+    </table>
+</schema>

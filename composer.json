@@ -1,0 +1,20 @@
+{
+    "name": "acme/module-storelocator",
+    "description": "N/A",
+    "require": {
+        "magento/framework": ">100.0"
+    },
+    "type": "magento2-module",
+    "version": "2.0.6",
+    "license": [
+        "GPLv3"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Acme\\StoreLocator\\": ""
+        }
+    }
+}

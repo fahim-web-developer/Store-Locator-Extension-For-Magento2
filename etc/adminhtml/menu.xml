@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<!--
+  ~ Copyright © 2018 Acme. All rights reserved.
+  ~ @license GPLv3
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Acme_StoreLocator::storelocator" title="Store Locator" module="Acme_StoreLocator" sortOrder="50" parent="Magento_Backend::content" resource="Acme_StoreLocator::configuration" />
+        <add id="Acme_StoreLocator::configuration" title="Configuration" module="Acme_StoreLocator" sortOrder="10" parent="Acme_StoreLocator::storelocator" action="adminhtml/system_config/edit/section/storelocator" resource="Acme_StoreLocator::configuration" />
+        <add id="Acme_StoreLocator::categories" title="Categories" module="Acme_StoreLocator" sortOrder="20" parent="Acme_StoreLocator::storelocator" action="storelocator/categories" resource="Acme_StoreLocator::categories" />
+        <add id="Acme_StoreLocator::stores_list" title="Stores" module="Acme_StoreLocator" sortOrder="30" parent="Acme_StoreLocator::storelocator" action="storelocator/stores" resource="Acme_StoreLocator::stores" />
+    </menu>
+</config>
