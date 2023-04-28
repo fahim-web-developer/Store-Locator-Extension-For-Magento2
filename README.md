@@ -1,7 +1,6 @@
 # Store-Locator-Extension-For-Magento2
 Best Functionality Store Locator Extension For Magento2
 
-Guest To Customer Extension For Magento2
 
 Installation Details
 
